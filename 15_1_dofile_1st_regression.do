@@ -33,11 +33,10 @@ ib(0).cs_p13_1 		/// Level of education (Base category: 0. No studies at all)
 ib(40).soc_str 		//  Socio-economic stratum (Base category: 40. High socioeconomic stratum)
 **# Se necesita cambiar el codigo de 40 a 4 en socio economic stratum
 
-**# Bookmark #5 - Hace falta agregar la interaccion c.sde_mun_agri#c.sde_mun_agri   
 
-// Regression: Probability that WOMEN work depending on the % of AGRICULTURAL jobs in their municipality  
+
 probit clase1 /// 
-c.sde_mun_agri ///
+c.sde_mun_agri##c.sde_mun_agri ///
 $municipal_characteristics ///
 $household_characteristics ///
 $individual_characteristics ///
@@ -46,15 +45,11 @@ if female==1 & eda>=15 ///
 [pweight=fac], ///
 vce(cluster count_entmun) 
 
-// Regression: Probability that MEN work depending on the % of AGRICULTURAL jobs in their municipality  
-probit clase1 /// 
-c.sde_mun_agri ///
-$household_characteristics ///
-$individual_characteristics ///
-if female==0 & eda>=15 ///
-[pweight=fac], ///
-vce(cluster count_entmun) 
-
+margins, at(sde_mun_agri=(0(1)100)) atmeans post
+marginsplot 
+graph export "$marginsplot\women_sde_agriculture.png", replace
+graph save "Graph" "$marginsplot\women_sde_agriculture.gph", replace
+**# Falta crear el comando global para marginsplot
 
 
 
@@ -68,11 +63,63 @@ if female==1 & eda>=15 ///
 [pweight=fac], ///
 vce(cluster count_entmun) 
 
-
-
-
-
 margins, at(sde_mun_agri=(0(1)100)) atmeans post
+marginsplot 
+graph export "$marginsplot\women_sde_agriculture.png", replace
+graph save "Graph" "$marginsplot\women_sde_agriculture.gph", replace
+**# Falta crear el comando global para marginsplot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**# Bookmark #5 - Hace falta agregar la interaccion c.sde_mun_agri#c.sde_mun_agri   
+
+// Regression: Probability that WOMEN work depending on the % of AGRICULTURAL jobs in their municipality  
+probit clase1 /// 
+c.sde_mun_agri ///
+$municipal_characteristics ///
+$household_characteristics ///
+$individual_characteristics ///
+ib(0).num_kids /// Number of sons or daughters (Base category: 0. No sons or daughters)
+if female==1 & eda>=15 ///
+[pweight=fac], ///
+vce(cluster count_entmun) 
+
+
+
+// Regression: Probability that MEN work depending on the % of AGRICULTURAL jobs in their municipality  
+probit clase1 /// 
+c.sde_mun_agri ///
+$household_characteristics ///
+$individual_characteristics ///
+if female==0 & eda>=15 ///
+[pweight=fac], ///
+vce(cluster count_entmun) 
+
+
+
+
+
+
 
 
 **# Bookmark #2

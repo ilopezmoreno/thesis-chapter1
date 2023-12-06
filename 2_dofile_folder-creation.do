@@ -1,0 +1,5 @@
+clear
+cd "$root" 
+
+
+
