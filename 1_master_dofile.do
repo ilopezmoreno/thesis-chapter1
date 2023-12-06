@@ -8,7 +8,7 @@ This master do-file includes three main instructions to Stata
 clear
 
 // GLOBAL WORKING DIRECTORES
-global root "C:\Users\d57917il\Documents\GitHub\thesis-chapter1"
+global root "C:/Users/d57917il/Documents/GitHub/thesis-chapter1" // Always use forward slashes in working directories
 *global enoe_datasets ""
 
 // FOLDER CREATION
