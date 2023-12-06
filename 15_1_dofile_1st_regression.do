@@ -2,23 +2,24 @@ clear
 **# Se necesita cambiar este global "root" por otro nombre
 global 	root "C:/Users/d57917il/Documents/1paper1/ENOE_2005q1 - 2019q1" 
 **# Se necesita asociar el folder "root" al folder donde se ubicaran las bases de datos.
-global 	tidy_data "C:\Users\d57917il\Documents\1paper1\ENOE_2005q1\2_databases\final"
+global 	tidy_data "C:/Users/d57917il/Documents/1paper1/ENOE_2005q1/2_databases/final"
 cd 		"$tidy_data"			
 use 	tidydata_2005q1
 
 tab per, nolabel // Data quality check: All observations are equal to 105, which mean we are using the dataset for the 1st quarter of 2005
 
 global municipal_characteristics /// 
-c.migration_mun		/// % of people in the municipality that migrated from their city or home-town to keep or obtain their current job
-c.w_educ_mun_pr		/// Percentage of women in the municipality with primary school or less
-c.w_educ_mun_s		/// Percentage of women in the municipality with secondary school 
-c.w_educ_mun_h 		/// Percentage of women in the municipality with high school 
-c.w_econ_mun_sing 	/// Percentage of women in the municipality that are single
-c.w_econ_mun_mafr 	/// Percentage of women in the municipality that are married or in a free-union relationship
-c.w_mun_nkids 		/// Average number of sons or daughters in the municipality considering women between 20 and 35 years old
-c.w_mun_eda 		/// Average age of women in the municipality
-c.ss_mun_low 		/// Percentage of people in the municipality from a low socioeconomic stratum
-c.ss_mun_mlow		//  Percentage of people in the municipality from a medium-low socioeconomic stratum
+c.migration_mun		/// % of residents in the municipality who migrated for their current job.
+c.w_educ_mun_pr		/// % of women in the municipality with primary school or less
+c.w_educ_mun_s		/// % of women in the municipality with secondary school 
+c.w_educ_mun_h 		/// % of women in the municipality with high school 
+c.w_econ_mun_sing 	/// % of women in the municipality that are single
+c.w_econ_mun_mafr 	/// % of women in the municipality that are married or in a free-union relationship
+c.ss_mun_low 		/// % of people in the municipality from a low socioeconomic stratum
+c.ss_mun_mlow		/// % of people in the municipality from a medium-low socioeconomic stratum
+c.w_mun_nkids 		/// Average children per woman aged 20-35 in the municipality.
+c.w_mun_eda 		//  Average age of women in the municipality
+
 
 global household_characteristics /// 
 ib(1).ur 			/// Living in an urban area (Base category: 1. Living in urban areas)
